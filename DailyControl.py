@@ -10,15 +10,6 @@ import time
 from multiprocessing import Process
 
 
-
-
-def test():
-
-	while True:
-	    print('Run task process (%s)...' % (os.getpid()))
-	    time.sleep(3)
-
-
 def kill(pid,stop):
 	"""killer，用于终止任务的函数"""
 	while True:
@@ -79,4 +70,10 @@ def DailyControl(start,stop,task,args=None,weekly=False):
 
 
 if __name__ == '__main__':
+	
+	def test():
+		while True:
+	    		print('Run task process (%s)...' % (os.getpid()))
+	    		time.sleep(3)
+
 	DailyControl('1147','1148',test)
