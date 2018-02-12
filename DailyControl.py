@@ -20,7 +20,7 @@ def test():
 
 
 def kill(pid,stop):
-
+	"""killer，用于终止任务的函数"""
 	while True:
 		H, M = time.strftime('%H-%M').split('-')
 		if H+M == stop:
