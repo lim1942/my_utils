@@ -29,7 +29,7 @@ def clean(root_dir, suffixes=suffixes):
                 except Exception as e:
                     print ('Failed to delete {}: {}'.format(fullDirName, str(e)))
                     
-        # clear pyc、pyo file
+        # clear pyc and pyo file
         for file in files:
             if any(map(lambda x: file.endswith(x), suffixes)):
                 try:
