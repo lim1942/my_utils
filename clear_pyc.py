@@ -21,7 +21,7 @@ def clean(root_dir, suffixes=suffixes):
 
         # clear directory name as '__pycache__'
         for _dir in dirs: 
-            if any(map(lambda x: _dir.endswith(x), dirName)):
+            if any(map(lambda x: _dir==x, dirName)):
                 try:
                     fullDirName = os.path.join(root,_dir)
                     os.system('rd /s /q {}'.format(fullDirName))
@@ -29,7 +29,7 @@ def clean(root_dir, suffixes=suffixes):
                 except Exception as e:
                     print ('Failed to delete {}: {}'.format(fullDirName, str(e)))
                     
-        # clear files end with 'pyc' and 'pyo'
+        # clear files end with '.pyc' and '.pyo'
         for file in files:
             if any(map(lambda x: file.endswith(x), suffixes)):
                 try:
