@@ -1,11 +1,24 @@
-#  pyhton3
+# -*- coding: utf-8 -*-
+# @Author: lim
+# @Date:   2018-07-27 09:24:33
+# @Last Modified by:   lim
+# @Last Modified time: 2018-07-27 16:42:02
+
 
 def get_cn_first_letter(_str,codec="UTF8"):
+
+    """
+    1 return a alphabet of Chinese by gbk index.
+    2.over gbk index will return '' 
+    3.alphabet and _ will return themselves """
     
     _str = _str.encode("GBK")
     
     if _str<b"\xb0\xa1" or _str>b"\xd7\xf9":
-        return _str.decode('GBK')
+        hook = _str.decode('GBK')
+        if hook not in 'abcdefghijklmnopqrstuvwxyz_':
+            hook = ''
+        return hook
     if _str<b"\xb0\xc4":
         return "a"
     if _str<b"\xb2\xc0":
@@ -54,15 +67,17 @@ def get_cn_first_letter(_str,codec="UTF8"):
         return "z"
 
 
-def main():
+def get_pinyin_name(word1,word2,flag):  
+    """return all first alphabet of all Chinese"""
 
-    while 1:
-        text = input('Please input a text line ...')
-        new_line = ''
-        for i in text:
-            new_line+=get_cn_first_letter(i)
-        print(new_line.replace('-','_')+'_content')
+    pinyin = ''
+    word = word1 + '_' + word2
+    for i in word:
+        pinyin+=get_cn_first_letter(i)
+    if flag == '0':
+        return pinyin.replace('-','_')+'_content.js'
+    if flag == '1':
+        return pinyin.replace('-','_')+'_source.js'
 
 
-if __name__ == '__main__':
-    main()
+
