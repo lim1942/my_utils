@@ -11,84 +11,49 @@ function radar_content(){
 
 function TRS_Document_Content(urlname,urltitle,content){
     var rval = new radar_content();
-
-    // for content
-    var begin_str = '';
-    var end_str = '';
-    var img_reg = /alt="\\"/g;
-    begin = content.indexOf(begin_str);
-    end = content.indexOf(end_str,begin);
-    // rval.source = begin.toString();
-    // rval.source = end.toString();
-    if (begin!=-1 && end !=-1){
-        rval.source = content.substring(begin,end).replace(begin_str,'').replace(img_reg,'');
-    }
+    //content = content.replace(/&nbsp;/gi,'')
 
     // for urltitle
-    var begin_str = '';
-    var end_str = '';
-    begin = content.indexOf(begin_str);
-    end = content.indexOf(end_str,begin);
-    // rval.source = begin.toString();
-    // rval.source = end.toString();    
-    if (begin!=-1 && end !=-1){
-        rval.urltitle = content.substring(begin,end).replace(begin_str,'');
-    }
+        match_1 = content.match(/([\s\S]*?)/)
+        if (match_1 && match_1.length>0){
+            rval.urltitle = match_1[1]
+        }  
+
+    // for content
+        match_2 = content.match(/([\s\S]*?)/)
+        if (match_2 && match_2.length>0){
+            rval.source = match_2[1]
+        }
 
     // for srcname
-    var begin_str = '';
-    var end_str = '';
-    begin = content.indexOf(begin_str);
-    end = content.indexOf(end_str,begin);
-    // rval.source = begin.toString();
-    // rval.source = end.toString();    
-    if (begin!=-1 && end !=-1){
-        rval.srcname = content.substring(begin,end).replace(begin_str,'');
-    }
+        match_3 = content.match(/([\s\S]*?)/)
+        if (match_3 && match_3.length>0){
+            rval.srcname = match_3[1]
+        }
 
     // for authors
-    var begin_str = '';
-    var end_str = '';
-    begin = content.indexOf(begin_str);
-    end = content.indexOf(end_str,begin);
-    // rval.source = begin.toString();
-    // rval.source = end.toString();    
-    if (begin!=-1 && end !=-1){
-        rval.authors = content.substring(begin,end).replace(begin_str,'');
-    }
+        match_4 = content.match(/([\s\S]*?)/)
+        if (match_4 && match_4.length>0){
+            rval.authors = match_4[1]
+        }
 
     // for urltime
-    var begin_str = '';
-    var end_str = '';
-    begin = content.indexOf(begin_str);
-    end = content.indexOf(end_str,begin);
-    // rval.source = begin.toString();
-    // rval.source = end.toString();    
-    if (begin!=-1 && end !=-1){
-        rval.urltime = content.substring(begin,end).replace(begin_str,'');
-    }
+        match_5 = content.match(/([\s\S]*?)/)
+        if (match_5 && match_5.length>0){
+            rval.urltime = match_5[1]
+        }
 
     // for vreserved1
-    var begin_str = '';
-    var end_str = '';
-    begin = content.indexOf(begin_str);
-    end = content.indexOf(end_str,begin);
-    // rval.source = begin.toString();
-    // rval.source = end.toString();    
-    if (begin!=-1 && end !=-1){
-        rval.vreserved1 = content.substring(begin,end).replace(begin_str,'');
-    }
-
+        match_6 = content.match(/([\s\S]*?)/)
+        if (match_6 && match_6.length>0){
+            rval.vreserved1 = match_6[1]
+        }
+    
     // for vreserved2
-    var begin_str = '';
-    var end_str = '';
-    begin = content.indexOf(begin_str);
-    end = content.indexOf(end_str,begin);
-    // rval.source = begin.toString();
-    // rval.source = end.toString();    
-    if (begin!=-1 && end !=-1){
-        rval.vreserved2 = content.substring(begin,end).replace(begin_str,'');
-    }    
+        match_7 = content.match(/([\s\S]*?)/)
+        if (match_7 && match_7.length>0){
+            rval.vreserved2 = match_7[1]
+        }
 
     return rval
 }
